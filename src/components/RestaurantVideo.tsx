@@ -13,10 +13,13 @@ export function RestaurantVideo({ fallback }: { fallback: string }) {
       playsInline
       preload="metadata"
       poster={media.video.poster}
+      src={media.video.src}
+      ref={(video) => {
+        if (video?.error) setFailed(true);
+      }}
       onError={() => setFailed(true)}
       aria-label="Restaurant introduction video"
     >
-      <source src={media.video.src} type="video/mp4" />
       {fallback}
     </video>
   );

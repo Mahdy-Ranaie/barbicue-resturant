@@ -8,8 +8,10 @@ Describe the change and why it is needed.
 - [ ] Browser review (if applicable)
 
 ## Documentation
-- [ ] Updated affected `docs/master-prompts/` documents
-- [ ] Updated `CHANGELOG.md`
+- [ ] Updated `REQUIREMENTS.md` and affected specifications in `docs/requirements/`
+- [ ] Appended dated updates to affected master prompts and verified the DOCX files open
+- [ ] Updated `ROADMAP.md` and `CHANGELOG.md`
+- [ ] Added the implementation and validation report under `docs/reports/`
 - [ ] Updated `docs/MEDIA-FILES.md` when needed
 
 ## Rollback
