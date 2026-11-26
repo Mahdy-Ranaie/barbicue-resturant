@@ -17,17 +17,37 @@ export type GalleryItem = {
   visible: boolean;
 };
 
-const gallery: readonly GalleryItem[] = [1, 2, 3].map((order) => {
+const galleryPhotos = [
+  {
+    title: { fa: "پیشخوان باربیکیو", en: "Barbecue counter" },
+    alt: { fa: "دو نفر پشت پیشخوان چوبی باربیکیو زیر چراغ‌های آویز", en: "Two people behind a wooden barbecue counter under hanging lights" },
+  },
+  {
+    title: { fa: "چیدمان پیشخوان", en: "Counter display" },
+    alt: { fa: "ظرف‌های غذا روی پیشخوان روشن باربیکیو", en: "Food displayed on an illuminated barbecue counter" },
+  },
+  {
+    title: { fa: "سینی باربیکیو", en: "Barbecue platter" },
+    alt: { fa: "سینی گوشت، سیخ‌های کباب، ذرت و سبزیجات گریل‌شده", en: "A platter of grilled meats, skewers, corn, and vegetables" },
+  },
+  {
+    title: { fa: "سیخ‌های کباب", en: "Barbecue skewers" },
+    alt: { fa: "سیخ‌های گوشت چیده‌شده دور یک ظرف سرو", en: "Meat skewers arranged around a serving display" },
+  },
+];
+
+const gallery: readonly GalleryItem[] = galleryPhotos.map(({ title, alt }, index) => {
+  const order = index + 1;
   const id = `gallery-0${order}`;
-  const persianNumber = new Intl.NumberFormat("fa").format(order);
+  const portrait = order >= 3;
   return {
     id,
-    thumbnail: { src: `/images/gallery/thumbnails/${id}.webp` },
-    standard: { src: `/images/gallery/standard/${id}.webp` },
-    title: { fa: `عکس ${persianNumber}`, en: `Photo ${order}` },
-    alt: { fa: `عکس ${persianNumber} از گالری رستوران`, en: `Restaurant gallery photo ${order}` },
+    thumbnail: { src: `/images/gallery/thumbnails/${id}.webp`, dimensions: { width: portrait ? 270 : 480, height: 360 } },
+    standard: { src: `/images/gallery/standard/${id}.webp`, dimensions: { width: portrait ? 1440 : 1920, height: portrait ? 1920 : 1440 } },
+    title,
+    alt,
     order,
-    featured: true,
+    featured: order <= 3,
     visible: true,
   };
 });
@@ -43,14 +63,14 @@ export const media = {
   hero: "/images/hero/hero-main.webp",
   about: "/images/about/restaurant-story.webp",
   menu: {
-    brisket: "/images/menu/brisket.webp",
-    chicken: "/images/menu/chicken.webp",
-    burger: "/images/menu/burger.webp"
+    brisket: "/images/menu/brisket.jpeg",
+    chicken: "/images/menu/chicken.jpeg",
+    burger: "/images/menu/burger.jpeg"
   },
   gallery,
   video: {
     src: "/videos/restaurant-intro.mp4",
-    poster: "/videos/restaurant-poster.webp"
+    poster: "/videos/restaurant-poster.jpeg"
   },
   placeholder: "/images/placeholders/media-placeholder.svg"
 } as const;

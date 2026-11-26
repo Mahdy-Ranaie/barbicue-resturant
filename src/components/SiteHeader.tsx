@@ -19,7 +19,7 @@ export function SiteHeader() {
     { href: "/#about", label: t.nav.about },
     { href: "/#menu", label: t.nav.menu },
     { href: "/#services", label: t.nav.services },
-    { href: "/gallery", label: t.nav.gallery },
+    { href: "/#gallery", label: t.nav.gallery },
     { href: "/#contact", label: t.nav.contact },
   ];
 
