@@ -6,8 +6,10 @@ Premium, bilingual (Persian RTL / English LTR) public restaurant showcase built 
 
 ## Development
 
+Use Node.js 22.13 or later in the Node.js 22 release line used by CI.
+
 ```bash
-npm install
+npm ci
 npm run dev
 npm run lint
 npm run typecheck

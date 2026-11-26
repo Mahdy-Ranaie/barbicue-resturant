@@ -8,6 +8,7 @@ import { media } from "@/config/media";
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("fa");
+  const [copyrightYear] = useState(() => new Date().getFullYear());
   const t = content[locale];
   const rtl = locale === "fa";
   useEffect(() => {
@@ -112,7 +113,7 @@ export default function Home() {
 
       <footer className="footer"><div className="container footer-inner">
         <div><BrandMark label={t.brand} /><p>{t.footerText}</p></div>
-        <span>© {new Date().getFullYear()} {t.rights}</span>
+        <span>© {copyrightYear} {t.rights}</span>
       </div></footer>
     </main>
   );
