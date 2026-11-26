@@ -2,7 +2,7 @@
 
 ## Architecture and scope
 
-- Keep the website a public, static restaurant showcase built with Next.js App Router, React, strict TypeScript, and Tailwind CSS. Keep the homepage in `src/app/page.tsx`, shared styles in `src/app/globals.css`, and reusable UI in `src/components/`.
+- Keep the website a public, static restaurant showcase built with Next.js App Router, React, strict TypeScript, and Tailwind CSS. Keep the homepage in `src/app/page.tsx`, the Gallery in `src/app/gallery/`, shared styles in `src/app/globals.css`, and shared site UI in `src/components/`.
 - Preserve the existing design and section structure unless the task explicitly changes them. Backend services, databases, accounts, administration, online ordering, reservations, and payments are outside the current project scope.
 - Reuse existing components and typed content. Prefer semantic HTML, native controls, visible keyboard focus, and reduced-motion support. Follow the existing code style and keep changes focused. Avoid mechanical formatting changes.
 
@@ -11,6 +11,7 @@
 - Persian is the default and uses RTL. English is secondary and uses LTR. Keep both locales in sync in `src/content/site.ts` and update both the document language and direction when switching. Verify alignment, wrapping, keyboard navigation, and accessible names in both languages.
 - Keep asset URLs in `src/config/media.ts` and files under `public/images/` and `public/videos/`. Preserve the paths in `docs/MEDIA-FILES.md`. If an approved change requires renaming an asset, update the registry, inventory, and affected master prompt together.
 - Use approved or licensed media, responsive images, and meaningful localized alternative text. Preserve the image and video fallbacks. Use owner-approved contact details, menu, and prices. Keep preview indexing disabled until publication is approved.
+- Use matching gallery image basenames under `public/images/gallery/thumbnails/` and `public/images/gallery/standard/`. Keep the selection, order, and bilingual metadata in the shared media registry. Browse with lazy thumbnails and request standard files only for the open viewer.
 
 ## Dependencies and validation
 
