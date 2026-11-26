@@ -6,7 +6,7 @@ repository:
   feature_branch_prefix: feature/
   version_tag_prefix: v
   last_documented_version: 0.0.3
-  proposed_version: 0.0.5
+  proposed_version: 0.0.6
 workflow:
   pull_requests_required: true
   approval_before_merge: true

@@ -2,6 +2,7 @@ export type Locale = "fa" | "en";
 export type MenuItem = { name: string; description: string; image: "brisket" | "chicken" | "burger" };
 export type SiteContent = {
   nav: { about: string; menu: string; services: string; gallery: string; contact: string };
+  navigationLabel: string; mobileNavigation: string; switchLanguage: string;
   brand: string; eyebrow: string; headline: string; heroText: string; discover: string; menuLink: string;
   aboutLabel: string; aboutTitle: string; aboutText: string; aboutExtra: string;
   menuLabel: string; menuTitle: string; menuText: string; dishes: MenuItem[];
@@ -15,6 +16,7 @@ export type SiteContent = {
 export const content: Record<Locale, SiteContent> = {
   fa: {
     nav: { about: "داستان ما", menu: "منو", services: "خدمات", gallery: "گالری", contact: "تماس" },
+    navigationLabel: "ناوبری اصلی", mobileNavigation: "ناوبری", switchLanguage: "Switch to English",
     brand: "باربیکیو", eyebrow: "طعم آتش، هنر مهمان‌نوازی", headline: "طعم اصیل باربیکیو، تجربه‌ای ماندگار",
     heroText: "گوشت‌های گریل‌شده، عطر دود و لحظه‌هایی برای دور هم بودن؛ به دنیای باربیکیو خوش آمدید.",
     discover: "داستان ما", menuLink: "مشاهده منو",
@@ -47,6 +49,7 @@ export const content: Record<Locale, SiteContent> = {
   },
   en: {
     nav: { about: "Our story", menu: "Menu", services: "Experience", gallery: "Gallery", contact: "Contact" },
+    navigationLabel: "Main navigation", mobileNavigation: "Navigation", switchLanguage: "تغییر زبان به فارسی",
     brand: "BARBECUE", eyebrow: "FIRE • FLAVOR • HOSPITALITY", headline: "Crafted over fire. Made to remember.",
     heroText: "Slow-cooked favorites, smoky aromas, and a welcoming table. Discover the spirit of barbecue.",
     discover: "Our story", menuLink: "Explore menu",
@@ -78,3 +81,20 @@ export const content: Record<Locale, SiteContent> = {
     playFallback: "The restaurant video has not been added yet."
   }
 };
+
+export const galleryCopy = {
+  fa: {
+    title: "گالری رستوران", viewAll: "مشاهده گالری کامل", backHome: "بازگشت به صفحه اصلی",
+    previous: "عکس قبلی", next: "عکس بعدی", close: "بستن تصویر",
+    actualSize: "اندازه واقعی", fit: "اندازه متناسب با صفحه",
+    loading: "در حال بارگیری تصویر…", imageUnavailable: "این عکس در دسترس نیست.",
+    noPhotos: "هنوز عکسی برای نمایش وجود ندارد.", of: "از",
+  },
+  en: {
+    title: "Restaurant Gallery", viewAll: "View Full Gallery", backHome: "Back to homepage",
+    previous: "Previous image", next: "Next image", close: "Close image",
+    actualSize: "Actual size", fit: "Fit to screen",
+    loading: "Loading image…", imageUnavailable: "This photo is unavailable.",
+    noPhotos: "There are no photos to display yet.", of: "of",
+  },
+} as const;

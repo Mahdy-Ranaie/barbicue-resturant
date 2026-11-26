@@ -1,10 +1,10 @@
 # Barbecue Restaurant requirements
 
-The [GitHub repository](https://github.com/Mahdy-Ranaie/barbicue-resturant) is the single source of truth for application code, approved development requirements, master prompts, and implementation history. This register consolidates the approved baseline from the six master prompts. The Word documents preserve the full requirements and dated updates. [Individual specifications](docs/requirements/) record version-specific scope and approvals. [ROADMAP.md](ROADMAP.md), [CHANGELOG.md](CHANGELOG.md), [implementation reports](docs/reports/), and pull requests record delivery and verification.
+The [GitHub repository](https://github.com/Mahdy-Ranaie/barbicue-resturant) is the single source of truth for application code, approved development requirements, master prompts, and implementation history. This register consolidates the approved baseline from the seven master prompts. The Word documents preserve the full requirements and dated updates. [Individual specifications](docs/requirements/) record version-specific scope and approvals. [ROADMAP.md](ROADMAP.md), [CHANGELOG.md](CHANGELOG.md), [implementation reports](docs/reports/), and pull requests record delivery and verification.
 
 ## Product scope and architecture
 
-- The application is a public-facing, single-page restaurant showcase for the restaurant, food, story, activities, services, gallery, video, and contact information. Public visitors can browse without an account. Login, authentication, authorization, administration, backend services, databases, online ordering, online reservations, and payments are outside scope.
+- The application is a public-facing restaurant showcase for the restaurant, food, story, activities, services, gallery, video, and contact information. Prompt07 approved extending the original single page with a dedicated `/gallery` route while preserving the homepage preview. Public visitors can browse without an account. Login, authentication, authorization, administration, backend services, databases, online ordering, online reservations, and payments are outside scope.
 - Use Next.js App Router, React, TypeScript, Tailwind CSS, and ESLint. Keep the homepage in `src/app/page.tsx`, root layout in `src/app/layout.tsx`, shared styles in `src/app/globals.css`, bilingual content in `src/content/site.ts`, and media URLs in `src/config/media.ts`.
 - Support Persian as the primary and default language with RTL direction. English is secondary and uses LTR. Use the same components for both languages. Switching languages updates document `lang` and `dir`.
 - Preserve the nine homepage areas: header and navigation, hero, about and story, menu showcase, services and activities, gallery, video showcase, contact and location, and footer.
@@ -27,10 +27,18 @@ The [GitHub repository](https://github.com/Mahdy-Ranaie/barbicue-resturant) is t
 | Hero | `public/images/hero/hero-main.webp` |
 | Story | `public/images/about/restaurant-story.webp` |
 | Menu | `public/images/menu/brisket.webp`, `public/images/menu/chicken.webp`, `public/images/menu/burger.webp` |
-| Gallery | `public/images/gallery/gallery-01.webp`, `public/images/gallery/gallery-02.webp`, `public/images/gallery/gallery-03.webp` |
+| Gallery | Paired files in `public/images/gallery/thumbnails/` and `public/images/gallery/standard/` with matching basenames. The original flat paths remain in Prompt04's history. |
 | Video and poster | `public/videos/restaurant-intro.mp4`, `public/videos/restaurant-poster.webp` |
 
 [Prompt02](docs/master-prompts/Prompt02-Reference-design.docx) · [Prompt03](docs/master-prompts/Prompt03-Homepage.docx) · [Prompt04](docs/master-prompts/Prompt04-Media-management.docx) · [Media inventory](docs/MEDIA-FILES.md)
+
+## Dedicated Gallery
+
+- Use one registry for the featured homepage thumbnails and the visible, ordered `/gallery` grid. Pair optimized thumbnail files with standard-resolution files that retain the source aspect ratio. Request standard files only when opening or navigating the viewer.
+- Share header, footer, and locale state. Link to Gallery from the desktop and mobile menus, the homepage Gallery title, and its **View Full Gallery** action. Preserve homepage section links from Gallery and keep the selected locale across page navigation.
+- Localize the grid and accessible viewer in Persian and English. Include image captions, counts, fit and actual-size modes, Previous and Next controls, Escape and arrow keys, focus restoration, scroll locking, loading and error states, and a local thumbnail fallback. Preserve responsive layouts and preview indexing restrictions.
+
+[REQ-007](docs/requirements/REQ-007-Gallery-page.md) · [Prompt07](docs/master-prompts/Prompt07-Gallery-page.docx)
 
 ## Development and verification
 
@@ -39,7 +47,7 @@ The [GitHub repository](https://github.com/Mahdy-Ranaie/barbicue-resturant) is t
 - Generate Next.js route declarations before TypeScript checks. Treat `next-env.d.ts` as generated. Preserve existing local changes and review removal of its tracked copy separately.
 - Run `npm ci`, lint, TypeScript checks, the production build, and Playwright. In GitHub Actions, install Chromium and its system dependencies, run tests against the production build, and retain failure diagnostics. Inspect CI and resolve or disclose failures before merge. A failed or unverified acceptance criterion cannot be marked complete.
 - Cover homepage loading, default Persian RTL, switching to English LTR, section navigation, narrow mobile overflow in both languages, missing-image and localized missing-video fallbacks, and unexpected browser errors. Keep test fixtures independent of owner-supplied media. Reproduce the suspected video fallback defect and fix it if confirmed.
-- Preserve the homepage design and the public, static scope in v0.0.5. Mobile navigation, responsive image sizing, localization improvements, and visual refinements are scheduled for v0.0.6 and require approved scope before implementation.
+- Preserve the homepage design and the public, static scope. Prompt07 approves shared mobile navigation and image, localization, and layout changes that support the Gallery. Broader visual refinements require separate approval.
 
 [Prompt03](docs/master-prompts/Prompt03-Homepage.docx) · [Prompt05](docs/master-prompts/Prompt05-GitHub-workflow.docx) · [Prompt06](docs/master-prompts/Prompt06-Codex-development-workflow.docx)
 
@@ -49,7 +57,7 @@ The [GitHub repository](https://github.com/Mahdy-Ranaie/barbicue-resturant) is t
 - After each approved implementation, identify and read the affected master prompts, preserve historical content and formatting, and append a dated, versioned update for the approved changes. Validate the resulting DOCX files. Keep the exact filenames and both document formats. The DOCX files retain the full prompt history and the Markdown register and specifications document active scope and traceability.
 - Update this register, `ROADMAP.md`, `CHANGELOG.md`, and any affected documentation. Generate an implementation and validation report with changed files, evidence, failures, limitations, and open work. Include documentation and source changes in the same pull request and check the diff, CI results, and risks.
 - Start from `develop` on a `feature/<description>` branch. Do not push directly to `develop` or `main`. Target `develop` with the feature PR and merge only after owner approval. Promote an approved revision to `main` through an approved release PR. Create an annotated `vX.Y.Z` tag only with owner approval. Preserve older tags for rollback, avoid force pushes to release branches, and keep credentials out of Git.
-- v0.0.4 is a reconstruction from specifications because the previously documented v0.0.3 ZIP was unavailable. Its integration merge is recorded in PR #1. A feature PR does not constitute a release, a tag, or acceptance of visual fidelity. v0.0.5 is the unreleased development milestone on `feature/v0.0.5-codex-setup`. Local implementation approval and permission to commit, push, merge, or tag are separate decisions.
+- v0.0.4 is a reconstruction integrated through PR #1 because the previously documented v0.0.3 ZIP was unavailable. v0.0.5 was integrated through PR #2. v0.0.6 is the unreleased Gallery milestone on `feature/v0.0.6-gallery-page`. A feature PR does not constitute a release, a tag, or acceptance of visual fidelity. Local implementation approval and permission to commit, push, merge, or tag are separate decisions.
 
 [Prompt01](docs/master-prompts/Prompt01-Project-initialization.docx) · [Prompt05](docs/master-prompts/Prompt05-GitHub-workflow.docx) · [Prompt06](docs/master-prompts/Prompt06-Codex-development-workflow.docx) · [GitHub workflow](docs/REPOSITORY-WORKFLOW.md) · [Reconstruction PR](https://github.com/Mahdy-Ranaie/barbicue-resturant/pull/1)
 
@@ -72,3 +80,4 @@ The [GitHub repository](https://github.com/Mahdy-Ranaie/barbicue-resturant) is t
 4. [Prompt04-Media-management.docx](docs/master-prompts/Prompt04-Media-management.docx)
 5. [Prompt05-GitHub-workflow.docx](docs/master-prompts/Prompt05-GitHub-workflow.docx)
 6. [Prompt06-Codex-development-workflow.docx](docs/master-prompts/Prompt06-Codex-development-workflow.docx)
+7. [Prompt07-Gallery-page.docx](docs/master-prompts/Prompt07-Gallery-page.docx)

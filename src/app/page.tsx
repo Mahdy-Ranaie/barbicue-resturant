@@ -1,37 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
-import { BrandMark } from "@/components/BrandMark";
+import Link from "next/link";
+import { useLocale } from "@/components/LocaleProvider";
 import { MediaImage } from "@/components/MediaImage";
 import { RestaurantVideo } from "@/components/RestaurantVideo";
-import { content, type Locale } from "@/content/site";
-import { media } from "@/config/media";
+import { galleryCopy } from "@/content/site";
+import { galleryItems, media } from "@/config/media";
 
 export default function Home() {
-  const [locale, setLocale] = useState<Locale>("fa");
-  const [copyrightYear] = useState(() => new Date().getFullYear());
-  const t = content[locale];
-  const rtl = locale === "fa";
-  useEffect(() => {
-    document.documentElement.lang = locale;
-    document.documentElement.dir = rtl ? "rtl" : "ltr";
-  }, [locale, rtl]);
+  const { locale, rtl, t } = useLocale();
+  const gallery = galleryCopy[locale];
 
   return (
     <main dir={rtl ? "rtl" : "ltr"}>
-      <header className="site-header">
-        <div className="container nav-inner">
-          <a className="brand-link" href="#top" aria-label={t.brand}><BrandMark label={t.brand} /></a>
-          <nav className="desktop-nav" aria-label={rtl ? "ناوبری اصلی" : "Main navigation"}>
-            <a href="#about">{t.nav.about}</a><a href="#menu">{t.nav.menu}</a>
-            <a href="#services">{t.nav.services}</a><a href="#gallery">{t.nav.gallery}</a>
-            <a href="#contact">{t.nav.contact}</a>
-          </nav>
-          <button className="language-switch" type="button"
-            aria-label={rtl ? "Switch to English" : "تغییر زبان به فارسی"}
-            onClick={() => setLocale(rtl ? "en" : "fa")}>{rtl ? "EN" : "فا"}</button>
-        </div>
-      </header>
-
       <section id="top" className="hero">
         <MediaImage src={media.hero} alt={rtl ? "تصویر فضای باربیکیو" : "Barbecue atmosphere"} priority className="hero-media" />
         <div className="hero-overlay" />
@@ -84,13 +64,23 @@ export default function Home() {
       </section>
 
       <section id="gallery" className="section gallery-section">
-        <div className="container"><div className="section-heading centered">
-          <span className="eyebrow">{t.galleryLabel}</span><h2>{t.galleryTitle}</h2>
-        </div><div className="gallery-grid">
-          {media.gallery.map((src, index) => <MediaImage key={src} src={src}
-            alt={rtl ? `تصویر گالری ${index + 1}` : `Gallery image ${index + 1}`}
-            className={index === 0 ? "gallery-large" : "gallery-small"} sizes="(max-width: 760px) 100vw, 50vw" />)}
-        </div></div>
+        <div className="container">
+          <div className="section-heading centered">
+            <span className="eyebrow">{t.galleryLabel}</span>
+            <h2><Link href="/gallery">{t.galleryTitle}</Link></h2>
+          </div>
+          <div className="gallery-grid">
+            {galleryItems.filter((item) => item.featured).map((item, index) => (
+              <MediaImage key={item.id} src={item.thumbnail.src} alt={item.alt[locale]}
+                fallbackAlt={gallery.imageUnavailable}
+                className={index === 0 ? "gallery-large" : "gallery-small"}
+                sizes={index === 0 ? "(max-width: 600px) 100vw, 58vw" : "(max-width: 600px) 100vw, 42vw"} />
+            ))}
+          </div>
+          <div className="gallery-preview-action">
+            <Link className="button button-outline" href="/gallery">{gallery.viewAll}</Link>
+          </div>
+        </div>
       </section>
 
       <section id="video" className="section video-section">
@@ -111,10 +101,6 @@ export default function Home() {
         </div></div>
       </section>
 
-      <footer className="footer"><div className="container footer-inner">
-        <div><BrandMark label={t.brand} /><p>{t.footerText}</p></div>
-        <span>© {copyrightYear} {t.rights}</span>
-      </div></footer>
     </main>
   );
 }

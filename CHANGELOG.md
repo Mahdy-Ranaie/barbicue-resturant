@@ -1,6 +1,13 @@
 # Changelog
 
-## [0.0.5] — Unreleased
+## [0.0.6] — Unreleased
+
+- Added the bilingual Gallery page, shared desktop and mobile navigation, and links from the homepage preview.
+- Added paired thumbnail and standard-image configuration and an accessible full-image dialog with an actual-size mode.
+- Added Gallery navigation, requests, fallback, keyboard, and responsive Playwright coverage.
+- Added REQ-007, Prompt07, and the Gallery implementation report. Preserved the historical master prompt content.
+
+## [0.0.5] — Integrated into develop, unreleased
 
 - Retained the ESLint 10 migration and reproducible npm lockfile.
 - Added repository development instructions, shared VS Code configuration, and a roadmap.

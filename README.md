@@ -1,6 +1,6 @@
 # Barbecue Restaurant
 
-Premium, bilingual (Persian RTL / English LTR) public restaurant showcase built with Next.js App Router, TypeScript and Tailwind CSS.
+Premium, bilingual (Persian RTL / English LTR) public restaurant showcase built with Next.js App Router, TypeScript and Tailwind CSS. The homepage introduces the restaurant and links to a dedicated [Gallery route](docs/requirements/REQ-007-Gallery-page.md) at `/gallery`.
 
 > **Source integrity:** The earlier v0.0.3 source ZIP was unavailable for direct recovery. This branch contains a **reconstruction** from the project specifications, not a byte-for-byte restoration. Please review the design before approving the PR.
 
@@ -36,6 +36,7 @@ GitHub Actions installs Chromium and its Linux dependencies with `npx playwright
 ## Structure
 
 - `src/app/`: homepage and global styling
+- `src/app/gallery/`: Gallery grid and full-image viewer
 - `src/content/site.ts`: bilingual text content
 - `src/config/media.ts`: single source of truth for media paths
 - `src/components/`: image, logo and video components
@@ -43,13 +44,15 @@ GitHub Actions installs Chromium and its Linux dependencies with `npx playwright
 - `docs/master-prompts/`: exact master prompt filenames
 - `REQUIREMENTS.md` and `docs/requirements/`: consolidated requirements and individual approved specifications
 - `docs/MEDIA-FILES.md`: required asset inventory
-- `tests/e2e/`: Playwright homepage coverage
+- `tests/e2e/`: Playwright homepage, shared navigation, and Gallery coverage
 
 Images use local fallback visuals until you supply the named files. Contact information and menu descriptions are placeholders, not verified restaurant facts.
 
+To add a Gallery photo, prepare its thumbnail and standard file and update the shared item in `src/config/media.ts`. See the [Gallery asset instructions](docs/MEDIA-FILES.md#gallery-image-pairs).
+
 ## Branches and releases
 
-Feature PRs target `develop`. Promote to `main` through an approved release PR and create `vX.Y.Z` tags only after separate approval. v0.0.4 was integrated through [PR #1](https://github.com/Mahdy-Ranaie/barbicue-resturant/pull/1). v0.0.5 is the unreleased development-infrastructure milestone. See the [roadmap](ROADMAP.md) and [repository workflow](docs/REPOSITORY-WORKFLOW.md).
+Feature PRs target `develop`. Promote to `main` through an approved release PR and create `vX.Y.Z` tags only after separate approval. v0.0.5 was integrated through [PR #2](https://github.com/Mahdy-Ranaie/barbicue-resturant/pull/2). v0.0.6 is the unreleased Gallery milestone. See the [roadmap](ROADMAP.md) and [repository workflow](docs/REPOSITORY-WORKFLOW.md).
 
 Use the [requirements register](REQUIREMENTS.md) and the [requirements management specification](docs/requirements/BBQ-REQ-001.md) to review scope, approvals, and documentation updates.
 
