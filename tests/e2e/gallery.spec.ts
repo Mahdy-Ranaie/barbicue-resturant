@@ -26,18 +26,19 @@ test("loads Persian Gallery with thumbnails and shared navigation", async ({ pag
   await expect(page.locator("#menu")).toBeInViewport();
 });
 
-test("opens Gallery through all three homepage entry points and returns home", async ({ page }) => {
+test("links the header to the homepage preview and opens Gallery through both preview links", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("navigation").getByRole("link", { name: content.fa.nav.gallery }).click();
+  await expect(page).toHaveURL(/\/#gallery$/);
+  await page.locator("#gallery").getByRole("heading", { level: 2 }).getByRole("link").click();
   await expect(page).toHaveURL(/\/gallery$/);
   await page.getByRole("link", { name: galleryCopy.fa.backHome }).click();
   await expect(page).toHaveURL(/\/$/);
 
-  await page.locator("#gallery").getByRole("heading", { level: 2 }).getByRole("link").click();
-  await expect(page).toHaveURL(/\/gallery$/);
-  await page.goBack();
   await page.getByRole("link", { name: galleryCopy.fa.viewAll }).click();
   await expect(page).toHaveURL(/\/gallery$/);
+  await page.getByRole("navigation").getByRole("link", { name: content.fa.nav.gallery }).click();
+  await expect(page).toHaveURL(/\/#gallery$/);
 });
 
 test("uses one through four columns at responsive widths", async ({ page }) => {
@@ -109,6 +110,7 @@ test("keeps English across routes and supports LTR arrow direction without conso
   await page.getByRole("button", { name: content.fa.switchLanguage }).click();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await page.getByRole("navigation").getByRole("link", { name: content.en.nav.gallery }).click();
+  await page.getByRole("link", { name: galleryCopy.en.viewAll }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(galleryCopy.en.title);
   await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
   await page.getByRole("button", { name: first.title.en }).click();
@@ -173,6 +175,8 @@ test.describe("mobile Gallery", () => {
     await expect(menu).toBeFocused();
     await menu.click();
     await page.getByRole("navigation").getByRole("link", { name: content.fa.nav.gallery }).click();
+    await expect(page).toHaveURL(/\/#gallery$/);
+    await page.getByRole("link", { name: galleryCopy.fa.viewAll }).click();
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(galleryCopy.fa.title);
     const noOverflow = () => page.evaluate(() => (
       document.documentElement.scrollWidth <= document.documentElement.clientWidth

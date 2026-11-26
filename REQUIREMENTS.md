@@ -26,16 +26,16 @@ The [GitHub repository](https://github.com/Mahdy-Ranaie/barbicue-resturant) is t
 | Logo | `public/images/branding/logo.svg` |
 | Hero | `public/images/hero/hero-main.webp` |
 | Story | `public/images/about/restaurant-story.webp` |
-| Menu | `public/images/menu/brisket.webp`, `public/images/menu/chicken.webp`, `public/images/menu/burger.webp` |
+| Menu | `public/images/menu/brisket.jpeg`, `public/images/menu/chicken.jpeg`, `public/images/menu/burger.jpeg` |
 | Gallery | Paired files in `public/images/gallery/thumbnails/` and `public/images/gallery/standard/` with matching basenames. The original flat paths remain in Prompt04's history. |
-| Video and poster | `public/videos/restaurant-intro.mp4`, `public/videos/restaurant-poster.webp` |
+| Video and poster | `public/videos/restaurant-intro.mp4`, `public/videos/restaurant-poster.jpeg` |
 
 [Prompt02](docs/master-prompts/Prompt02-Reference-design.docx) · [Prompt03](docs/master-prompts/Prompt03-Homepage.docx) · [Prompt04](docs/master-prompts/Prompt04-Media-management.docx) · [Media inventory](docs/MEDIA-FILES.md)
 
 ## Dedicated Gallery
 
 - Use one registry for the featured homepage thumbnails and the visible, ordered `/gallery` grid. Pair optimized thumbnail files with standard-resolution files that retain the source aspect ratio. Request standard files only when opening or navigating the viewer.
-- Share header, footer, and locale state. Link to Gallery from the desktop and mobile menus, the homepage Gallery title, and its **View Full Gallery** action. Preserve homepage section links from Gallery and keep the selected locale across page navigation.
+- Share header, footer, and locale state. The desktop and mobile Gallery menu item leads to the homepage preview. The preview title and **View Full Gallery** link to the dedicated page. Preserve homepage section links from Gallery and keep the selected locale across page navigation.
 - Localize the grid and accessible viewer in Persian and English. Include image captions, counts, fit and actual-size modes, Previous and Next controls, Escape and arrow keys, focus restoration, scroll locking, loading and error states, and a local thumbnail fallback. Preserve responsive layouts and preview indexing restrictions.
 
 [REQ-007](docs/requirements/REQ-007-Gallery-page.md) · [Prompt07](docs/master-prompts/Prompt07-Gallery-page.docx)

@@ -58,3 +58,13 @@ Local checks ran with Node.js 22.15.0, npm 10.9.2, and headless Chrome on Window
 - The four JPEG originals and the restaurant video remain in the existing checkout. They were excluded from this feature worktree. Publication still needs approved photo pairs and meaningful Persian and English descriptions. The viewer and browsing paths use local fallback UI until the assets arrive.
 - Existing tests verify the browser behavior with controlled assets. Final media quality, final video playback, and Safari and Firefox behavior still need publication review.
 - The first page load starts in Persian RTL. The locale persists during in-app navigation and browser Back. A full reload starts a new visit in Persian.
+
+## Media follow-up (2026-11-26)
+
+The follow-up starts from the merged Gallery on `develop` at `bdfa0c4`. It adds four WebP thumbnail and standard pairs and the supplied introduction MP4. The first three photos appear on the homepage. The dedicated Gallery displays all four with Persian and English captions, alt text, and dimensions.
+
+The source JPEGs were preserved locally. Sharp applied EXIF orientation and resized the derivatives without upscaling or cropping. The four thumbnails total 83,726 bytes and fit within 480 × 360 px. The standards total 1,225,132 bytes, retain their aspect ratios, and have a 1920 px long edge. The owner-adjusted Gallery navigation opens the homepage preview in both layouts. The title and **View Full Gallery** still open the dedicated route. The owner-adjusted JPEG menu and poster paths are documented. Those four files are pending.
+
+Updated the registry, shared navigation, Gallery browser checks, affected requirements, roadmap, changelog, media inventory, and Prompts 03, 04, and 07. All three updated Word documents opened successfully, and checks confirmed that historical XML and other package parts were preserved.
+
+Lint, TypeScript, the production build, and all 15 Playwright tests passed for the follow-up. A separate headless Chrome check against the production server without fixtures loaded all four optimized thumbnails, opened a 1920 px standard image, and successfully read metadata from the supplied 14.72-second MP4. Full playback and target-device review remain publication checks.

@@ -6,13 +6,13 @@ The v0.0.4 reconstruction and v0.0.5 development setup are integrated into `deve
 | --- | --- | --- |
 | v0.0.4 reconstructed showcase | Integrated on `develop`. Persian RTL and English LTR share a responsive, single-page layout with local media paths and placeholder copy. | All required homepage sections render and the reconstruction is documented. Owner review establishes the design baseline for release. |
 | v0.0.5 development infrastructure | Integrated through PR #2. Includes contributor standards, editor settings, locked installs, Playwright, CI, and the requirements register. | Local checks and GitHub CI passed. Audit findings and limitations are recorded. |
-| v0.0.6 dedicated Gallery | Adds the Gallery route, mobile navigation, dual-size media, and the viewer. See [REQ-007](docs/requirements/REQ-007-Gallery-page.md). | The route, all entry links, locales, responsive layouts, viewer controls, request behavior, and fallbacks pass validation. Approved production photos and captions remain a content deliverable. |
+| v0.0.6 dedicated Gallery | Adds the Gallery route, mobile navigation, dual-size media, and the viewer. The media follow-up provides the first four photo pairs and bilingual captions. See [REQ-007](docs/requirements/REQ-007-Gallery-page.md). | The route, homepage entry links, locales, responsive layouts, viewer controls, request behavior, and fallbacks pass validation. |
 | Publication | Awaiting verified bilingual restaurant details, licensed media, hosting decision, and owner approval. | The final menu and contact details are accurate, real assets and playback are checked, preview indexing settings are reviewed, and release proceeds through an approved PR and tag. |
 
 ## Known issues and follow-up
 
-- Review responsive image hints and visual polish beyond Gallery scope separately. Gallery descriptions and localized alt text require approved photo content.
-- Real restaurant photos, logo, video, poster, and verified restaurant details are pending. Playwright covers layout and fallback behavior with fixtures. Playback of the final video remains a release check.
+- Review responsive image hints and visual polish beyond Gallery scope separately.
+- The Gallery photos and intro video are available. The logo, hero and story photos, menu photos, video poster, and verified restaurant details are pending. Playback and visual review on target devices remain release checks.
 - `next-env.d.ts` is generated and covered by the ignore rule, but Git still tracks its legacy copy. Type checking can generate it on a clean checkout. Remove the tracked copy in a reviewed Git change while keeping local generated files.
 - Track unresolved dependency advisories in the v0.0.5 implementation report.
 

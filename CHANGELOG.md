@@ -6,6 +6,7 @@
 - Added paired thumbnail and standard-image configuration and an accessible full-image dialog with an actual-size mode.
 - Added Gallery navigation, requests, fallback, keyboard, and responsive Playwright coverage.
 - Added REQ-007, Prompt07, and the Gallery implementation report. Preserved the historical master prompt content.
+- Added four resized Gallery image pairs, bilingual captions and alt text, and the restaurant intro video. The Gallery menu item now opens the homepage preview, which links to the dedicated page.
 
 ## [0.0.5] — Integrated into develop, unreleased
 

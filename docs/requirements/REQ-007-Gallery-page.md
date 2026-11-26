@@ -12,7 +12,7 @@ Extend the static restaurant showcase with a dedicated Gallery and retain the ho
 ## Functional requirements
 
 - Provide `/gallery` with the shared header and footer, localized title, responsive grid, captions where available, image viewer, and a link home.
-- Link from both device navigation modes, the homepage Gallery heading, and the localized **View Full Gallery** action. Homepage section links must work from the Gallery page.
+- Use the Gallery item in both navigation modes to reach the homepage preview. The homepage Gallery heading and localized **View Full Gallery** action open the dedicated route. Homepage section links work from the Gallery page.
 - Show only visible items in configured order and only featured thumbnails in the homepage preview. Each item includes an ID, two image paths, bilingual title and alt text, optional bilingual descriptions, order, visibility, featured status, and dimensions where available.
 - Show the selected standard-resolution image with a localized title or caption and count. Provide Previous, Next, Close, Escape, direction-aware arrow keys, and actual-size and fit modes.
 - Display localized loading and error states and retain usability with unavailable media. Keep focus in the modal while open, restore the triggering button on close, and suspend background scroll.
@@ -47,7 +47,9 @@ Extend the static restaurant showcase with a dedicated Gallery and retain the ho
 | Dialog keyboard controls, focus, scroll locking, and error states | Playwright interaction tests |
 | Persian and English, mobile menu, overflow, portrait and landscape | Playwright viewport coverage |
 | Clean install, lint, type checks, build, and browser regression suite | [Implementation and validation report](../reports/PROMPT07-GALLERY-IMPLEMENTATION-REPORT.md) |
-| Approved restaurant media, dimensions and localized descriptions | Pending approved production assets |
+| Restaurant photos, dimensions and localized captions | Four paired WebP photos in the media follow-up. See the implementation report. |
+
+The initial Prompt07 routed the header item directly to `/gallery`. The media follow-up reflects the owner's edit to `/#gallery` while retaining direct links in the preview.
 
 ## Related master prompt documents
 
